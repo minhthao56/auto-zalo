@@ -1,5 +1,5 @@
+import ExecuteCommand from "@/components/execute_command";
 import Image from "next/image";
-import ExecuteCommand from "./components/execute_command";
 
 export default function Home() {
   return (
