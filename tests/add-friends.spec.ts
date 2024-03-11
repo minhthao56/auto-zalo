@@ -1,7 +1,11 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, chromium } from '@playwright/test';
 
-test('add friends', async ({ page }) => {
-    await page.goto('https://chat.zalo.me/');
+test('add friends', async ({  }) => {
+  const browser = await chromium.connectOverCDP('http://localhost:9222');
+
+  const defaultContext = browser.contexts()[0]
+  const page = defaultContext.pages()[0]
+  await page.goto('https://chat.zalo.me/');
   await page.getByTitle('Thêm bạn').locator('i').click();
   await page.getByPlaceholder('Số điện thoại ').fill('969198695');
   await page.locator('div').filter({ hasText: /^Tìm kiếm$/ }).nth(2).click();
